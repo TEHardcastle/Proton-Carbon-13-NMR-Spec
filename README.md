@@ -1,1 +1,1 @@
-javascript tools based on General Chemistry - Linus Pauling
+Javascript tools based on Proton and Carbon-13 NMR Spectroscopy by R. J Abraham and P. Loftus
