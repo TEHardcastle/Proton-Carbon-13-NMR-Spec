@@ -1,5 +1,9 @@
 "use strict"
 
+function initialiseEnergyDiagram(evt){
+	console.log("Initialising energy diagram");
+}
+
 function initialiseDemo(evt){
 
 	let svg = evt.target;
@@ -35,11 +39,14 @@ function initialiseDemo(evt){
 
     for (var x = 37.5; x < 751; x += 75) {
     	let fieldLine = document.createElementNS(svgns, 'polyline');
-    	let points = x + ',700 ' + x + ',50 ' + (x-10) + ',60 ' + x + ',50 ' + (x+10) + ',60 ';
+    	let points =
+		x + ',700 ' +
+		x + ',50 ' +
+		(x-10) + ',60 ';
     	fieldLine.setAttributeNS(null, 'points', points);
     	fieldLine.setAttributeNS(null, 'fill', 'none');
     	fieldLine.setAttributeNS(null, 'stroke', 'black');
-    	fieldLine.setAttributeNS(null, 'stroke-width', '1px');
+    	fieldLine.setAttributeNS(null, 'stroke-width', '3px');
     	container.appendChild(fieldLine);
     }
 
@@ -55,22 +62,6 @@ function swapState(evt){
 	console.log(evt);
 	let selectedElement = evt.target;
 	if (selectedElement.getAttributeNS(null, 'fill') == '#FF0000'){
-		let absorption = document.createElementNS(svgns, 'circle');
-		let radius = 50;
-		absorption.setAttributeNS(null, 'cx', selectedElement.getAttributeNS(null, 'cx'));
-		absorption.setAttributeNS(null, 'cy', selectedElement.getAttributeNS(null, 'cy'));
-		absorption.setAttributeNS(null, 'r', radius);
-		absorption.setAttributeNS(null, 'stroke', 'black');
-		absorption.setAttributeNS(null, 'stroke-width', '2px');
-		absorption.setAttributeNS(null, 'fill-opacity', 0);
-		container.appendChild(absorption);
-		while (radius > 0){
-			sleep(10);
-			radius -= 1;
-			absorption.setAttribute('r', radius);
-			container.appendChild(absorption);
-		}
-		//container.removeChild(absorption);
 		selectedElement.setAttributeNS(null, 'fill', '#0000FF');
 	}
 	else if (selectedElement.getAttributeNS(null, 'fill') == '#0000FF'){

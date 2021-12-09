@@ -9,7 +9,57 @@
 <body>
 <h1>NMR Basics</h1>
 
-<p>Red protons are in low energy &alpha; state, and blue are in high energy &beta; state. An &alpha; to &beta; transition increases the total energy of the system and occurs when a photon is absorbed, and a &beta; to &alpha; transition reduced the total energy of the system, emitting a photon.</p>
+<p>
+	NMR relies on the magnetic moments of nuclei, <span class='equation'>&mu;</span>, orienting themselves in different ways when an external magnetic field, <span class='equation'>B</span>, is applied. The number of allowable orientations, <span class='equation'>n<sub>I</sub></span>, depends on the nuclear spin, <span class='equation'>I</span>, according to equation 1.
+</p>
+<p class='equation'>
+	Equation 1: n<sub>I</sub> = 2I + 1
+</p>
+<p>
+	These orientations are assigned magnetic quantum numbers, <span class='equation'>m<sub>I</sub></span>, with values ranging from <span class='equation'>+I</span> to <span class='equation'>-I</span> with a step size of 1. The energy, <span class='equation'>E</span>, of these states is proportional to the nuclear moment and the applied field, according to equation 2. Where <span class='equation'>&gamma;</span> is the magnetogyric ratio of the nucleus, and <span class='equation'>h</span> is the Planck constant.
+</p>
+<p class='equation'>
+	Equation 2: E = - h m<sub>I</sub> B &gamma; <sup>1</sup>/<sub>2&pi;</sub>
+</p>
+
+<svg	id = "energyDiagram"
+		onload = initialiseEnergyDiagram(evt)
+		width = "300" height = "400">
+
+		<rect x='1' y='1' width='298' height='398' fill='none' stroke='black' stroke-width='3'/>
+		<text x='10' y='40'>Draw an energy diagram that</text>
+		<text x='10' y='60'>displays the energies of the</text>
+		<text x='10' y='80'>orientations</text>
+</svg>
+
+<h2>Example: Hydrogen</h2>
+
+<table>
+	<tr>
+		<th>Property</th>
+		<th>Symbol</th>
+		<th>Value</th>
+	</tr>
+	<tr>
+		<td>Nuclear spin</td>
+		<td>I</td>
+		<td><sup>1</sup>/<sub>2</sub></td>
+	</tr>
+	<tr>
+		<td>Magnetogyric Ratio</td>
+		<td>&gamma;</td>
+		<td>267.52</td>
+		<!-- &gamma; = 267.52 10^6 rad s^-1 T^-1  |||| &gamma;/(2&pi;) = 42.577 MHz T^-1-->
+	</tr>
+</table>
+<p>
+	Hydrogen has a value of <span class='equation'>I</span> equal to 1/2, and has 2 allowable orientations with magnetic quantum numbers <span class='equation'>m<sub>I</sub></span> = 1/2 and
+	<span class='equation'>m<sub>I</sub></span> = -1/2.
+</p>
+
+<p>
+	Red protons are in low energy <span class='equation'>&alpha;</span> state, and blue are in high energy <span class='equation'>&beta;</span> state. An <span class='equation'>&alpha;</span> to <span class='equation'>&beta;</span> transition increases the total energy of the system and occurs when a photon is absorbed, and a <span class='equation'>&beta;</span> to <span class='equation'>&alpha;</span> transition reduces the total energy of the system, emitting a photon.
+</p>
 
 <br><br>
 
@@ -17,6 +67,9 @@
 		onload = initialiseDemo(evt)
 		width = "750" height = "750">
 </svg>
+<br><br>
+
+<p> The
 
 </body>
 
