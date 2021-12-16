@@ -1,8 +1,65 @@
 "use strict"
 
 function initialiseEnergyDiagram(evt){
-	console.log("Initialising energy diagram");
+	let svg = evt.target;
+	let selectedElement = false;
+
+    let initialSliderPosition = false;
+	let initialClickPosition = false;
+    let sliderChange;
+    let newSliderPosition;
+
+	let positionB = 150;
+	let valueB = 1;
+	let positionGamma = 150;
+	let valueGamma = 1;
+	let deltaEnergy = 50;
+
+	let container = document.getElementById('energyDiagram');
+	let svgns = 'http://www.w3.org/2000/svg';
+
+	svg.addEventListener('mousedown', startDrag);
+    svg.addEventListener('mousemove', drag);
+    svg.addEventListener('mouseup', endDrag);
+    svg.addEventListener('mouseleave', endDrag);
+
+	function startDrag(evt) {
+		selectedElement = evt.target;
+		if (selectedElement && selectedElement.tagName == 'circle') {
+            initialSliderPosition = selectedElement.getAttributeNS(null, 'cx');
+            initialClickPosition = evt.clientX;
+			console.log(initialSliderPosition);
+        }
+	}
+
+	function drag(evt) {
+        if (selectedElement && selectedElement.tagName == 'circle') {
+			sliderChange = evt.clientX - initialClickPosition;
+            newSliderPosition = +initialSliderPosition +sliderChange;
+			if (75 < newSliderPosition && newSliderPosition < 225){
+				selectedElement.setAttributeNS(null, 'cx', newSliderPosition);
+			}
+			positionB = document.getElementById('circleFieldSlider').getAttributeNS(null, 'cx');
+			valueB = (positionB / 150).toPrecision(4);
+			positionGamma = document.getElementById('circleMagnetogyricSlider').getAttributeNS(null, 'cx');
+			valueGamma = (positionGamma / 150).toPrecision(4);
+			deltaEnergy = (50*valueB*valueGamma);
+
+			document.getElementById('lineHighEnergy').setAttributeNS(null, 'y1', 180 - deltaEnergy);
+			document.getElementById('lineHighEnergy').setAttributeNS(null, 'y2', 180 - deltaEnergy);
+			document.getElementById('lineLowEnergy').setAttributeNS(null, 'y1', 180 + deltaEnergy);
+			document.getElementById('lineLowEnergy').setAttributeNS(null, 'y2', 180 + deltaEnergy);
+			document.getElementById('lineHighChange').setAttributeNS(null, 'y2', 180 - deltaEnergy);
+			document.getElementById('lineLowChange').setAttributeNS(null, 'y2', 180 + deltaEnergy);
+			console.log(valueB, valueGamma);
+    	}
+	}
+
+	function endDrag(evt) {
+		selectedElement = null;
+	}
 }
+
 
 function initialiseDemo(evt){
 

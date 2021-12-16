@@ -25,11 +25,25 @@
 <svg	id = "energyDiagram"
 		onload = initialiseEnergyDiagram(evt)
 		width = "300" height = "400">
-
+		<!-- Border -->
 		<rect x='1' y='1' width='298' height='398' fill='none' stroke='black' stroke-width='3'/>
-		<text x='10' y='40'>Draw an energy diagram that</text>
-		<text x='10' y='60'>displays the energies of the</text>
-		<text x='10' y='80'>orientations</text>
+		<!-- Sliders -->
+		<text x='55' y='355'>B</text>
+		<line id='lineFieldSlider' x1='75' y1='350' x2='225' y2='350' stroke='black' stroke-width='3'/>
+		<circle id='circleFieldSlider' cx='150' cy='350' r='5' fill='red' stroke='black' stroke-width='3'/>
+
+		<text x='55' y='380'>&gamma;</text>
+		<line id='lineMagnetogyricSlider' x1='75' y1='375' x2='225' y2='375' stroke='black' stroke-width='3'/>
+		<circle id='circleMagnetogyricSlider' cx='150' cy='375' r='5' fill='blue' stroke='black' stroke-width='3'/>
+
+		<!-- Energy Diagram -->
+		<line id='lineHighEnergy' x1='140' y1='130' x2='200' y2='130' stroke='black' stroke-width='3'/>
+		<line id='lineBaseEnergy' x1='40' y1='180' x2='100' y2='180' stroke='black' stroke-width='3'/>
+		<line id='lineHighChange' x1='100' y1='180' x2='140' y2='130' stroke='black' stroke-width='3' stroke-dasharray='5, 5'/>
+		<line id='lineLowChange' x1='100' y1='180' x2='140' y2='230' stroke='black' stroke-width='3' stroke-dasharray='5, 5'/>
+		<line id='lineLowEnergy' x1='140' y1='230' x2='200' y2='230' stroke='black' stroke-width='3'/>
+
+
 </svg>
 
 <h2>Example: Hydrogen</h2>
