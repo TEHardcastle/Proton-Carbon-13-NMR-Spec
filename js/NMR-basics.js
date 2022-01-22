@@ -4,10 +4,10 @@ function initialiseEnergyDiagram(evt){
 	let svg = evt.target;
 	let selectedElement = false;
 
-    let initialSliderPosition = false;
+	let initialSliderPosition = false;
 	let initialClickPosition = false;
-    let sliderChange;
-    let newSliderPosition;
+	let sliderChange;
+	let newSliderPosition;
 
 	let positionB = 150;
 	let valueB = 1;
@@ -19,23 +19,23 @@ function initialiseEnergyDiagram(evt){
 	let svgns = 'http://www.w3.org/2000/svg';
 
 	svg.addEventListener('mousedown', startDrag);
-    svg.addEventListener('mousemove', drag);
-    svg.addEventListener('mouseup', endDrag);
-    svg.addEventListener('mouseleave', endDrag);
+	svg.addEventListener('mousemove', drag);
+	svg.addEventListener('mouseup', endDrag);
+	svg.addEventListener('mouseleave', endDrag);
 
 	function startDrag(evt) {
 		selectedElement = evt.target;
 		if (selectedElement && selectedElement.tagName == 'circle') {
-            initialSliderPosition = selectedElement.getAttributeNS(null, 'cx');
-            initialClickPosition = evt.clientX;
+		initialSliderPosition = selectedElement.getAttributeNS(null, 'cx');
+		initialClickPosition = evt.clientX;
 			console.log(initialSliderPosition);
-        }
+		}
 	}
 
 	function drag(evt) {
-        if (selectedElement && selectedElement.tagName == 'circle') {
+		if (selectedElement && selectedElement.tagName == 'circle') {
 			sliderChange = evt.clientX - initialClickPosition;
-            newSliderPosition = +initialSliderPosition +sliderChange;
+			newSliderPosition = +initialSliderPosition +sliderChange;
 			if (75 < newSliderPosition && newSliderPosition < 225){
 				selectedElement.setAttributeNS(null, 'cx', newSliderPosition);
 			}
